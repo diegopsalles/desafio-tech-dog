@@ -4,8 +4,4 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Desafio.Tech.Dog.Domain\Desafio.Tech.Dog.Domain.csproj" />
-  </ItemGroup>
-
 </Project>

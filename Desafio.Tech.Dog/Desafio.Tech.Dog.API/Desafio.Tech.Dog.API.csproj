@@ -4,14 +4,4 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.1" />
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.1.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\Desafio.Tech.Dog.ApplicationService\Desafio.Tech.Dog.ApplicationService.csproj" />
-    <ProjectReference Include="..\Desafio.Tech.Dog.Repository.CrossCutting\Desafio.Tech.Dog.Repository.CrossCutting.csproj" />
-  </ItemGroup>
-
 </Project>

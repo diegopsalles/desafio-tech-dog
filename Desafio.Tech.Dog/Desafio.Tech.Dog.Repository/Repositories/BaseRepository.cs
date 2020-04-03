@@ -1,6 +1,9 @@
 ﻿using Desafio.Tech.Dog.Domain.Contracts.Repositories;
+using Desafio.Tech.Dog.Repository.Contexts;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Desafio.Tech.Dog.Repository.Repositories
@@ -9,27 +12,45 @@ namespace Desafio.Tech.Dog.Repository.Repositories
     {
         public void Delete(TEntity obj)
         {
-            throw new NotImplementedException();
+            using (var ctx = new ApplicationDbContext())
+            {
+                ctx.Entry(obj).State = EntityState.Deleted;
+                ctx.SaveChanges();
+            }
         }
 
         public List<TEntity> GetAll()
         {
-            throw new NotImplementedException();
+            using (var ctx = new ApplicationDbContext())
+            {
+                return ctx.Set<TEntity>().ToList();
+            }
         }
 
         public TEntity GetById(Tkey id)
         {
-            throw new NotImplementedException();
+            using (var ctx = new ApplicationDbContext())
+            {
+                return ctx.Set<TEntity>().Find(id);
+            }
         }
 
         public void Insert(TEntity obj)
         {
-            throw new NotImplementedException();
+            using (var ctx = new ApplicationDbContext())
+            {
+                ctx.Entry(obj).State = EntityState.Added;
+                ctx.SaveChanges();
+            }
         }
 
         public void Update(TEntity obj)
         {
-            throw new NotImplementedException();
+            using (var ctx = new ApplicationDbContext())
+            {
+                ctx.Entry(obj).State = EntityState.Modified;
+                ctx.SaveChanges();
+            }
         }
     }
 }

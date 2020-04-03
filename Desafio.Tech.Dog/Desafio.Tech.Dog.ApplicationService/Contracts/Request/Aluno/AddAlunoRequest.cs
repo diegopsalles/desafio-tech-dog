@@ -7,6 +7,7 @@ using Desafio.Tech.Dog.ApplicationService.Contracts.Messages.Aluno;
 namespace Desafio.Tech.Dog.ApplicationService.Contracts.Request.Aluno
 {
     public class AddAlunoRequest
-    {public AddAlunoMessage AlunoMessage { get; set; }
+    {
+        public AddAlunoMessage AlunoMessage { get; set; }
     }
 }

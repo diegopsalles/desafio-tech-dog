@@ -11,7 +11,7 @@ namespace Desafio.Tech.Dog.Domain.Contracts.Repositories
         void Delete(TEntity obj);
 
         List<TEntity> GetAll();
-        TEntity GetById(Tkey id);
+        TEntity GetById(TKey id);
 
     }
 }

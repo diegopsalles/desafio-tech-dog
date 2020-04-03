@@ -2,6 +2,7 @@
 using Desafio.Tech.Dog.ApplicationService.Contracts.Responses.Aluno;
 using Desafio.Tech.Dog.ApplicationService.Interfaces;
 using Desafio.Tech.Dog.Domain.Contracts.Services;
+using Desafio.Tech.Dog.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -12,13 +13,15 @@ namespace Desafio.Tech.Dog.ApplicationService.Services
     {
         private readonly IAlunoDomainService _alunoDomainService;
 
-        public AlunoApplicationService( IAlunoDomainService alunoDomainService)
-        {
-            _alunoDomainService = alunoDomainService;
-        }
+        public AlunoApplicationService( IAlunoDomainService alunoDomainService) => _alunoDomainService = alunoDomainService;
+
         public AddAlunoResponse Add(AddAlunoRequest request)
         {
-            throw new NotImplementedException();
+            var model = new Aluno { Nome = request.AlunoMessage.Nome, DataDeNascimento = request.AlunoMessage.DataDeNascimento};
+
+            _alunoDomainService.Create(model);
+
+            return new AddAlunoResponse(true, model.IdAluno);
         }
 
         public GetAlunoByIdResponse Get(int Id)

@@ -15,11 +15,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Desafio.Tech.Dog.Applicatio
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Desafio.Tech.Dog.Domain", "Desafio.Tech.Dog.Domain\Desafio.Tech.Dog.Domain.csproj", "{44DC66D8-ABD5-4561-86F9-805F71DB0DA9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Desafio.Tech.Dog.API", "Desafio.Tech.Dog.API\Desafio.Tech.Dog.API.csproj", "{88B10C5C-53E0-4DBD-B72A-C4574EA3241E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Desafio.Tech.Dog.API", "Desafio.Tech.Dog.API\Desafio.Tech.Dog.API.csproj", "{88B10C5C-53E0-4DBD-B72A-C4574EA3241E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Desafio.Tech.Dog.Repository.CrossCutting", "Desafio.Tech.Dog.Repository.CrossCutting\Desafio.Tech.Dog.Repository.CrossCutting.csproj", "{52AA5301-6E19-4F41-BF32-E3AF16A720A5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Desafio.Tech.Dog.Repository.CrossCutting", "Desafio.Tech.Dog.Repository.CrossCutting\Desafio.Tech.Dog.Repository.CrossCutting.csproj", "{52AA5301-6E19-4F41-BF32-E3AF16A720A5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Desafio.Tech.Dog.Repository", "Desafio.Tech.Dog.Repository\Desafio.Tech.Dog.Repository.csproj", "{8D429214-BCC1-47DA-A64C-CE3E54A114CE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Desafio.Tech.Dog.Repository", "Desafio.Tech.Dog.Repository\Desafio.Tech.Dog.Repository.csproj", "{9F94018B-458D-4018-AAB4-AF8E7C89B543}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -43,10 +43,10 @@ Global
 		{52AA5301-6E19-4F41-BF32-E3AF16A720A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{52AA5301-6E19-4F41-BF32-E3AF16A720A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{52AA5301-6E19-4F41-BF32-E3AF16A720A5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8D429214-BCC1-47DA-A64C-CE3E54A114CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8D429214-BCC1-47DA-A64C-CE3E54A114CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8D429214-BCC1-47DA-A64C-CE3E54A114CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8D429214-BCC1-47DA-A64C-CE3E54A114CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F94018B-458D-4018-AAB4-AF8E7C89B543}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F94018B-458D-4018-AAB4-AF8E7C89B543}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F94018B-458D-4018-AAB4-AF8E7C89B543}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F94018B-458D-4018-AAB4-AF8E7C89B543}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -56,7 +56,7 @@ Global
 		{44DC66D8-ABD5-4561-86F9-805F71DB0DA9} = {49D76D2F-9D67-4C37-9963-6C835BC6B995}
 		{88B10C5C-53E0-4DBD-B72A-C4574EA3241E} = {436076BD-A9EC-4240-B9E7-BC405E1382EC}
 		{52AA5301-6E19-4F41-BF32-E3AF16A720A5} = {954B0684-EA0F-4D07-9347-FB7CEBE92A4B}
-		{8D429214-BCC1-47DA-A64C-CE3E54A114CE} = {954B0684-EA0F-4D07-9347-FB7CEBE92A4B}
+		{9F94018B-458D-4018-AAB4-AF8E7C89B543} = {954B0684-EA0F-4D07-9347-FB7CEBE92A4B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F6C31BEC-EAE7-468D-B417-F4C4187B99FA}

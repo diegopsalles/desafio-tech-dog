@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "Start": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "launchUrl": "swagger",
+      "ErrorString": "Error reading JObject from JsonReader. Path '', line 0, position 0."
+    }
+  }
+}

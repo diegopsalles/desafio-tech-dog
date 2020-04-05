@@ -13,9 +13,8 @@ namespace Desafio.Tech.Dog.Domain.Entities
         public List<Aluno> Alunos { get; set; }
 
 
-        public void Update(int idTurma, string nome, int capacidade)
+        public void Update(string nome, int capacidade)
         {
-            this.IdTurma = idTurma;
             this.Nome = nome;
             this.Capacidade = capacidade;
         }
@@ -25,7 +24,5 @@ namespace Desafio.Tech.Dog.Domain.Entities
             this.Nome = nome;
             this.Capacidade = capacidade;
         }
-
-
     }
 }

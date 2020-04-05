@@ -27,17 +27,17 @@ namespace Desafio.Tech.Dog.ApplicationService.Services
             return new AddEscolaResponse(true, model.IdEscola);
         }
 
-        public EscolaResponse Get(int Id)
+        public GetEscolaByIdResponse Get(int Id)
         {
             throw new NotImplementedException();
         }
 
-        public EscolaResponse List()
+        public GetEscolaByIdResponse List()
         {
             throw new NotImplementedException();
         }
 
-        public EscolaResponse Update(AddEscolaRequest request)
+        public GetEscolaByIdResponse Update(AddEscolaRequest request)
         {
             throw new NotImplementedException();
         }

@@ -9,6 +9,7 @@ namespace Desafio.Tech.Dog.ApplicationService.Contracts.Request.Escola
 {
     public class AddEscolaRequest
     {
+        [JsonPropertyName("escolaMessage")]
         public AddEscolaMessage EscolaMessage { get; set; }
     }
 }

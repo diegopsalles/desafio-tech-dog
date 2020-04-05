@@ -2,11 +2,21 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Text.Json.Serialization;
 
 namespace Desafio.Tech.Dog.ApplicationService.Contracts.Responses.Aluno
 {
-    public class ListAlunoResponse
+    public class ListAlunoResponse : AlunoBaseResponse
     {
-        public List<ListAlunoMessage> ListAlunos { get; set; }
+        public ListAlunoResponse(bool success, List<ListAlunoMessage> result = null, string error= "")
+        {
+            Result = result;
+            Success = success;
+            if (!success)
+                SetError(error);
+        }
+
+        [JsonPropertyName("result")]
+        public List<ListAlunoMessage> Result { get; set; }
     }
 }

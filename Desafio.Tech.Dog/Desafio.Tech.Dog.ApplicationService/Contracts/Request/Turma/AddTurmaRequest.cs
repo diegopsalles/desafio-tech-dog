@@ -8,6 +8,7 @@ namespace Desafio.Tech.Dog.ApplicationService.Contracts.Request.Turma
 {
     public class AddTurmaRequest
     {
+        [JsonPropertyName("turmaMessage")]
         public AddTurmaMessage TurmaMessage { get; set; }
     }
 }

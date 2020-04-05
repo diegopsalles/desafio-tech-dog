@@ -9,8 +9,10 @@ namespace Desafio.Tech.Dog.ApplicationService.Interfaces
     public interface IEnderecoApplicationService
     {
         AddEnderecoResponse Add(AddEnderecoRequest request);
-        EnderecoResponse Update(AddEnderecoRequest request);
-        EnderecoResponse List();
-        EnderecoResponse Get(int Id);
+        UpdateEnderecoResponse Update(UpdateEnderecoRequest request);
+        ListEnderecoResponse List();
+        GetEnderecoByIdResponse Get(GetEnderecoByIdRequest request);
+        DeleteEnderecoResponse Delete(DeleteEnderecoRequest request);
+
     }
 }

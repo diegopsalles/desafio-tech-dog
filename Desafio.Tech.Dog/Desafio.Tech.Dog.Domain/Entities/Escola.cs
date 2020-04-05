@@ -12,5 +12,13 @@ namespace Desafio.Tech.Dog.Domain.Entities
 
         public List<Turma> Turmas { get; set; }
 
+        public void Update(string nome)
+        {
+            this.Nome = nome;
+        }
+        public void Add(string nome)
+        {
+            this.Nome = nome;
+        }
     }
 }

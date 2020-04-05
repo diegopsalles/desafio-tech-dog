@@ -1,11 +1,14 @@
 ﻿
+using Desafio.Tech.Dog.ApplicationService.Contracts.Messages.Escola;
 using Desafio.Tech.Dog.ApplicationService.Contracts.Request.Escola;
 using Desafio.Tech.Dog.ApplicationService.Contracts.Responses.Escola;
 using Desafio.Tech.Dog.ApplicationService.Interfaces;
+using Desafio.Tech.Dog.ApplicationService.Models;
 using Desafio.Tech.Dog.Domain.Contracts.Services;
 using Desafio.Tech.Dog.Domain.Entities;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Desafio.Tech.Dog.ApplicationService.Services
@@ -17,29 +20,106 @@ namespace Desafio.Tech.Dog.ApplicationService.Services
         public EscolaApplicationService(IEscolaDomainService escolaDomainService) => _escolaDomainService = escolaDomainService;
         public AddEscolaResponse Add(AddEscolaRequest request)
         {
-            var model = new Escola
-            {
-                Nome = request.EscolaMessage.Nome,
-            };
+            var model = new Escola();
+
+            model.Add(request.EscolaMessage.Nome);
 
             _escolaDomainService.Create(model);
 
             return new AddEscolaResponse(true, model.IdEscola);
         }
 
-        public GetEscolaByIdResponse Get(int Id)
+        public DeleteEscolaResponse Delete(DeleteEscolaRequest request)
         {
-            throw new NotImplementedException();
+            var model = _escolaDomainService.ListById(request.IdEscola);
+
+            if (model != null && model.IdEscola > 0)
+            {
+                _escolaDomainService.Delete(model);
+                return new DeleteEscolaResponse(true, message: "Escola was deleted successfully!");
+            }
+            else
+                return new DeleteEscolaResponse(false, error: "Fail to delete Escola!");
         }
 
-        public GetEscolaByIdResponse List()
+        public GetEscolaByIdResponse Get(GetEscolaByIdRequest request)
         {
-            throw new NotImplementedException();
+            var response = _escolaDomainService.ListById(request.IdEscola);
+
+            if (response != null && response.IdEscola > 0)
+            {
+                var escolabyId = new GetEscolaByIdMessage
+                {
+                    IdEscola = response.IdEscola,
+                    Nome = response.Nome,
+                    Endereco = new EnderecoModel()
+                    {
+                        IdEndereco = response.Endereco.IdEndereco,
+                        Logradouro = response.Endereco.Logradouro,
+                        Complemento = response.Endereco.Complemento,
+                        Bairro = response.Endereco.Bairro,
+                        Cidade = response.Endereco.Cidade,
+                        Estado = response.Endereco.Estado,
+                    },
+                    Turmas = new List<TurmaModel>()
+                    {
+                        IdTurma = response.Turmas.IdTurma,
+                        Nome = response.Turmas.Nome,
+                        Capacidade = response.Turmas.Capacidade
+                    },
+                };
+                return new GetEscolaByIdResponse(true, escolabyId);
+            }
+            else
+                return new GetEscolaByIdResponse(false);
         }
 
-        public GetEscolaByIdResponse Update(AddEscolaRequest request)
+        public ListEscolaResponse List()
         {
-            throw new NotImplementedException();
+            var lstModel = _escolaDomainService.ListAll();
+
+            if (lstModel != null && lstModel.Count > 0)
+            {
+                List<ListEscolaMessage> lstEscola = lstModel.Select(model => new ListEscolaMessage
+                {
+                    IdEscola = model.IdEscola,
+                    Nome = model.Nome,
+                    Turmas = new List<TurmaModel>()
+                    {
+                        IdTurma = model.Turmas.IdTurma,
+                        Nome = model.Turmas.Nome,
+                        Capacidade = model.Turmas.Capacidade
+                    },
+                    Endereco = new EnderecoModel()
+                    {
+                        IdEndereco = model.Endereco.IdEndereco,
+                        Logradouro = model.Endereco.Logradouro,
+                        Complemento = model.Endereco.Complemento,
+                        Bairro = model.Endereco.Bairro,
+                        Cidade = model.Endereco.Cidade,
+                        Estado = model.Endereco.Estado,
+                    }
+                }).ToList();
+                return new ListEscolaResponse(true, lstEscola);
+            }
+            else
+                return new ListEscolaResponse(false);
+        }
+        public UpdateEscolaResponse Update(UpdateEscolaRequest request)
+        {
+            var model = _escolaDomainService.ListById(request.IdEscola);
+
+            if (model != null && model.IdEscola > 0)
+            {
+                model.Update(model.Nome);
+
+                _escolaDomainService.Update(model);
+
+                return new UpdateEscolaResponse(true, message: "Escola was updated successfully!");
+            }
+            else
+                return new UpdateEscolaResponse(false, error: "Fail to update Escola");
         }
     }
 }
+            

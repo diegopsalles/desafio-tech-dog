@@ -8,6 +8,7 @@ namespace Desafio.Tech.Dog.ApplicationService.Contracts.Request.Endereco
 {
     public class AddEnderecoRequest
     {
+        [JsonPropertyName("enderecoMessage")]
         public AddEnderecoMessage EnderecoMessage { get; set; }
     }
 }

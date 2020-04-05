@@ -27,17 +27,17 @@ namespace Desafio.Tech.Dog.ApplicationService.Services
             return new AddTurmaResponse(true, model.IdTurma);
         }
 
-        public TurmaResponse Get(int Id)
+        public GetTurmaByIdResponse Get(int Id)
         {
             throw new NotImplementedException();
         }
 
-        public TurmaResponse List()
+        public GetTurmaByIdResponse List()
         {
             throw new NotImplementedException();
         }
 
-        public TurmaResponse Update(AddTurmaRequest request)
+        public GetTurmaByIdResponse Update(AddTurmaRequest request)
         {
             throw new NotImplementedException();
         }

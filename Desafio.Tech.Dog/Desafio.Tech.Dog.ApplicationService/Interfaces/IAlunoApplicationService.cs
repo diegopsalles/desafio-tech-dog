@@ -11,6 +11,7 @@ namespace Desafio.Tech.Dog.ApplicationService.Interfaces
         AddAlunoResponse Add(AddAlunoRequest request);
         UpdateAlunoResponse Update(UpdateAlunoRequest request);
         ListAlunoResponse List();
-        GetAlunoByIdResponse Get(int Id);
+        GetAlunoByIdResponse Get(GetAlunoByIdRequest request);
+        DeleteAlunoResponse Delete(DeleteAlunoRequest request);
     }
 }

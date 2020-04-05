@@ -1,13 +1,12 @@
-﻿using System;
+﻿using Desafio.Tech.Dog.ApplicationService.Models;
+using System;
 using System.Collections.Generic;
-using Desafio.Tech.Dog.Domain.Entities;
 using System.Text;
 using System.Text.Json.Serialization;
-using Desafio.Tech.Dog.ApplicationService.Models;
 
 namespace Desafio.Tech.Dog.ApplicationService.Contracts.Messages.Aluno
 {
-    public class ListAlunoMessage
+    public class GetAlunoByIdMessage
     {
         [JsonPropertyName("idAluno")]
         public int IdAluno { get; set; }
@@ -17,6 +16,5 @@ namespace Desafio.Tech.Dog.ApplicationService.Contracts.Messages.Aluno
         public DateTime DataDeNascimento { get; set; }
         [JsonPropertyName("idTurma")]
         public TurmaModel IdTurma { get; set; }
-
     }
 }

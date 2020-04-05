@@ -8,6 +8,7 @@ namespace Desafio.Tech.Dog.ApplicationService.Contracts.Request.Aluno
 {
     public class AddAlunoRequest
     {
+        [JsonPropertyName("alunoMessage")]
         public AddAlunoMessage AlunoMessage { get; set; }
     }
 }

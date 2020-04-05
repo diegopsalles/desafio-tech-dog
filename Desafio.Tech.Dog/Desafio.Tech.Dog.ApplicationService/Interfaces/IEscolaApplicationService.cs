@@ -9,8 +9,8 @@ namespace Desafio.Tech.Dog.ApplicationService.Interfaces
     public interface IEscolaApplicationService
     {
         AddEscolaResponse Add(AddEscolaRequest request);
-        EscolaResponse Update(AddEscolaRequest request);
-        EscolaResponse List();
-        EscolaResponse Get(int Id);
+        GetEscolaByIdResponse Update(AddEscolaRequest request);
+        GetEscolaByIdResponse List();
+        GetEscolaByIdResponse Get(int Id);
     }
 }

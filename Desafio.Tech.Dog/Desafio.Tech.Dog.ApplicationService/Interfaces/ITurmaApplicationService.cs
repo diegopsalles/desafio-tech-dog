@@ -9,8 +9,8 @@ namespace Desafio.Tech.Dog.ApplicationService.Interfaces
     public interface ITurmaApplicationService
     {
         AddTurmaResponse Add(AddTurmaRequest request);
-        TurmaResponse Update(AddTurmaRequest request);
-        TurmaResponse List();
-        TurmaResponse Get(int Id);
+        GetTurmaByIdResponse Update(AddTurmaRequest request);
+        GetTurmaByIdResponse List();
+        GetTurmaByIdResponse Get(int Id);
     }
 }

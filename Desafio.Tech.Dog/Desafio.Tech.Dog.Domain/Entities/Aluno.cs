@@ -11,5 +11,16 @@ namespace Desafio.Tech.Dog.Domain.Entities
         public DateTime DataDeNascimento { get; set; }
 
         public Turma Turma { get; set; }
+
+        public void Update(string nome, DateTime dataDeNascimento)
+        {
+           this.Nome = nome;
+            this.DataDeNascimento = dataDeNascimento;
+        }
+        public void Add(string nome, DateTime dataDeNascimento)
+        {
+            this.Nome = nome;
+            this.DataDeNascimento = dataDeNascimento;
+        }
     }
 }

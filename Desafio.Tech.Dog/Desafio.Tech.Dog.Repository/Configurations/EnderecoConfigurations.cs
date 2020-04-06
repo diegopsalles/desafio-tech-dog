@@ -21,6 +21,7 @@ namespace Desafio.Tech.Dog.Repository.Configurations
                 e.Property(x => x.Bairro).IsRequired();
                 e.Property(x => x.Cidade).IsRequired();
                 e.Property(x => x.Estado).IsRequired();
+                e.HasOne(x => x.Escola);
             });
         }
     }

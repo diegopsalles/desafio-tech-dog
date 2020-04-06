@@ -51,7 +51,7 @@ namespace Desafio.Tech.Dog.API.Controllers
         }
 
         [HttpGet]
-        [Route("/{idAluno}")]
+        [Route("{idAluno}")]
         public IActionResult Get([FromQuery]GetAlunoByIdRequest request)
         {
             var response = _alunoApplicationService.Get(request);
@@ -63,8 +63,8 @@ namespace Desafio.Tech.Dog.API.Controllers
         }
 
         [HttpDelete]
-        [Route("/{idAluno}")]
-        public IActionResult Delete([FromRoute]DeleteAlunoRequest request)
+        [Route("{idAluno}")]
+        public IActionResult Delete([FromQuery]DeleteAlunoRequest request)
         {
             var response = _alunoApplicationService.Delete(request);
 

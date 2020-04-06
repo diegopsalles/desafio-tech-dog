@@ -51,7 +51,7 @@ namespace Desafio.Tech.Dog.API.Controllers
         }
 
         [HttpGet]
-        [Route("/{idEndereco}")]
+        [Route("{idEndereco}")]
         public IActionResult Get([FromQuery]GetEnderecoByIdRequest request)
         {
             var response = _enderecoApplicationService.Get(request);
@@ -63,7 +63,7 @@ namespace Desafio.Tech.Dog.API.Controllers
         }
 
         [HttpDelete]
-        [Route("/{idEndereco}")]
+        [Route("{idEndereco}")]
         public IActionResult Delete([FromRoute]DeleteEnderecoRequest request)
         {
             var response = _enderecoApplicationService.Delete(request);

@@ -43,12 +43,5 @@ namespace Desafio.Tech.Dog.Repository.CrossCutting
             services.AddScoped<IEnderecoDomainService, EnderecoDomainService>();
             services.AddScoped<ITurmaDomainService, TurmaDomainService>();
         }
-
-        public static void ConfigEntityFramework(this IServiceCollection services)
-        {
-            string strConnection = @"Server = MYSQL5025.site4now.net; Database = db_a5644e_desafio; Uid = a5644e_desafio; Pwd = 290665Diego*"; ;
-
-            services.AddDbContext<ApplicationDbContext>(o => o.UseMySql(strConnection));
-        }
     }
 }

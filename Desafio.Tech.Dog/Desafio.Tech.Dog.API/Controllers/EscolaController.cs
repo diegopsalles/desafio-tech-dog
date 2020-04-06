@@ -51,7 +51,7 @@ namespace Desafio.Tech.Dog.API.Controllers
         }
 
         [HttpGet]
-        [Route("/{id}")]
+        [Route("/{idEscola}")]
         public IActionResult Get([FromQuery]GetEscolaByIdRequest request)
         {
             var response = _escolaApplicationService.Get(request);
@@ -63,7 +63,7 @@ namespace Desafio.Tech.Dog.API.Controllers
         }
 
         [HttpDelete]
-        [Route("/{id}")]
+        [Route("/{idEscola}")]
         public IActionResult Delete([FromRoute]DeleteEscolaRequest request)
         {
             var response = _escolaApplicationService.Delete(request);

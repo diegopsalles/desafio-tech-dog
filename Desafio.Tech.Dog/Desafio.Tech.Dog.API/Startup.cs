@@ -18,7 +18,6 @@ namespace Desafio.Tech.Dog.API
         {
             services.AddControllers();
             services.InvokeDIFactory();
-            services.ConfigEntityFramework();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Desafio.Tech.Dog.API", Version = "v1" });

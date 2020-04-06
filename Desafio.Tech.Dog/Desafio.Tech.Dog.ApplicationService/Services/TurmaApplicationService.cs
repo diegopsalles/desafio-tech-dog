@@ -47,19 +47,21 @@ namespace Desafio.Tech.Dog.ApplicationService.Services
 
             if (response != null && response.IdTurma > 0)
             {
-                var turmabyId = new GetTurmaByIdMessage
+                var escolabyId = new GetTurmaByIdMessage();
+                escolabyId.IdTurma = response.IdTurma;
+                escolabyId.Nome = response.Nome;
+                escolabyId.Alunos = new List<AlunoModel>();
+
+                foreach (var turma in response.Alunos)
                 {
-                    IdTurma = response.IdTurma,
-                    Nome = response.Nome,
-                    Capacidade = response.Capacidade,
-                    Alunos = new List<AlunoModel>()
+                    var alunoModel = new AlunoModel()
                     {
-                        IdAluno = response.Alunos.IdAluno,
-                        Nome = response.Alunos.Nome,
-                        DataDeNascimento = response.Alunos.DataDeNascimento
-                    },
-                };
-                return new GetTurmaByIdResponse(true, turmabyId);
+                        IdAluno = turma.IdAluno,
+                        Nome = turma.Nome
+                    };
+                    escolabyId.Alunos.Add(alunoModel);
+                }
+                return new GetTurmaByIdResponse(true, escolabyId);
             }
             else
                 return new GetTurmaByIdResponse(false);
@@ -75,13 +77,11 @@ namespace Desafio.Tech.Dog.ApplicationService.Services
                 {
                     IdTurma = model.IdTurma,
                     Nome = model.Nome,
-                    Capacidade = model.Capacidade,
-                    Alunos = new List<AlunoModel>()
+                    Alunos = model.Alunos.Select(turma => new AlunoModel()
                     {
-                        IdAluno= model.Alunos.IdAluno,
-                        Nome = model.Alunos.Nome,
-                        DataDeNascimento = model.Alunos.DataDeNascimento
-                    }
+                        IdAluno = turma.IdAluno,
+                        Nome = turma.Nome,
+                    }).ToList()
                 }).ToList();
                 return new ListTurmaResponse(true, lstEscola);
             }

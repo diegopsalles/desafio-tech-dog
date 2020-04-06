@@ -17,7 +17,7 @@ namespace Desafio.Tech.Dog.Repository.Configurations
                 e.HasKey(x => x.IdEscola);
                 e.Property(x => x.IdEscola).HasColumnName("IdEscola").ValueGeneratedOnAdd(); ;
                 e.Property(x => x.Nome).IsRequired();
-                e.HasOne(x => x.Endereco);
+                e.HasOne(x => x.Endereco).WithOne(y => y.Escola).HasForeignKey<Endereco>(z => z.IdEscola);
                 e.HasMany(x => x.Turmas);
             });
         }

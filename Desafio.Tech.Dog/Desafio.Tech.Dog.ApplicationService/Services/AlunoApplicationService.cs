@@ -22,7 +22,7 @@ namespace Desafio.Tech.Dog.ApplicationService.Services
         {
             var model = new Aluno();
             
-            model.Add(request.AlunoMessage.Nome,request.AlunoMessage.DataDeNascimento);
+            model.Add(request.AlunoMessage.Nome,request.AlunoMessage.DataDeNascimento, request.AlunoMessage.IdTurma);
 
             _alunoDomainService.Create(model);
 
@@ -44,7 +44,7 @@ namespace Desafio.Tech.Dog.ApplicationService.Services
 
         public GetAlunoByIdResponse Get(GetAlunoByIdRequest request)
         {
-            var response =  _alunoDomainService.ListById(request.IdAluno);
+            var response = _alunoDomainService.ListById(request.IdAluno);
 
             if (response != null && response.IdAluno > 0)
             {
@@ -53,13 +53,17 @@ namespace Desafio.Tech.Dog.ApplicationService.Services
                     IdAluno = response.IdAluno,
                     Nome = response.Nome,
                     DataDeNascimento = response.DataDeNascimento,
-                    IdTurma = new TurmaModel() 
-                    { 
-                        IdTurma = response.Turma.IdTurma ,
-                        Nome = response.Turma.Nome ,
-                        Capacidade = response.Turma.Capacidade 
-                    }
+                    IdTurma = response.IdTurma,
                 };
+                //if (response.Turma != null)
+                //{
+                //    alunobyId.IdTurma = new TurmaModel()
+                //    {
+                //        IdTurma = response.Turma.IdTurma,
+                //        Nome = response.Turma.Nome,
+                //        Capacidade = response.Turma.Capacidade
+                //    };
+                //}
                 return new GetAlunoByIdResponse(true, alunobyId);
             }
             else
@@ -69,34 +73,43 @@ namespace Desafio.Tech.Dog.ApplicationService.Services
         public ListAlunoResponse List()
         {
             var lstModel = _alunoDomainService.ListAll();
-
+            
             if (lstModel != null && lstModel.Count > 0)
             {
-                List<ListAlunoMessage> lstAluno = lstModel.Select(model => new ListAlunoMessage
+                List<ListAlunoMessage> lstAluno = new List<ListAlunoMessage>();
+
+                lstModel.ForEach(model =>
                 {
-                    IdAluno = model.IdAluno,
-                    Nome = model.Nome,
-                    DataDeNascimento = model.DataDeNascimento,
-                    IdTurma = new TurmaModel()
-                    {
-                        IdTurma = model.Turma.IdTurma,
-                        Nome = model.Turma.Nome,
-                        Capacidade = model.Turma.Capacidade
-                    }
-                }).ToList();
+                    ListAlunoMessage aluno = new ListAlunoMessage();
+                    aluno.IdAluno = model.IdAluno;
+                    aluno.Nome = model.Nome;
+                    aluno.DataDeNascimento = model.DataDeNascimento;
+                    aluno.IdTurma = model.IdTurma;
+                    //if (model.Turma != null)
+                    //{
+                    //    aluno.IdTurma = new TurmaModel()
+                    //    {
+                    //        IdTurma = model.Turma.IdTurma,
+                    //        Nome = model.Turma.Nome,
+                    //        Capacidade = model.Turma.Capacidade
+                    //    };
+                    //}
+                    lstAluno.Add(aluno);
+                });
+
                 return new ListAlunoResponse(true, lstAluno);
             }
             else
                 return new ListAlunoResponse(false);
         }
 
-        public UpdateAlunoResponse Update(UpdateAlunoRequest request)
+    public UpdateAlunoResponse Update(UpdateAlunoRequest request)
         {
             var model = _alunoDomainService.ListById(request.IdAluno);
 
             if (model != null && model.IdAluno > 0)
             {
-                model.Update(request.Nome,request.DataDeNascimento);
+                model.Update(request.Nome, request.DataDeNascimento, request.IdTurma);//, request.Turma.IdTurma, request.Turma.Nome, request.Turma.Capacidade);
                 
                 _alunoDomainService.Update(model);
 

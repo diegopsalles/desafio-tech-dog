@@ -51,28 +51,34 @@ namespace Desafio.Tech.Dog.ApplicationService.Services
                 var escolabyId = new GetEscolaByIdMessage();
                 escolabyId.IdEscola = response.IdEscola;
                 escolabyId.Nome = response.Nome;
-                escolabyId.Endereco = new EnderecoModel()
-                {
-                    IdEndereco = response.Endereco.IdEndereco,
-                    Logradouro = response.Endereco.Logradouro,
-                    Complemento = response.Endereco.Complemento,
-                    Bairro = response.Endereco.Bairro,
-                    Cidade = response.Endereco.Cidade,
-                    Estado = response.Endereco.Estado,
-                };
-                escolabyId.Turmas = new List<TurmaModel>();
-            
-                foreach (var turma in response.Turmas)
-                {
-                    var turmaModel = new TurmaModel()
-                    {
-                        IdTurma = turma.IdTurma,
-                        Nome = turma.Nome,
-                        Capacidade = turma.Capacidade
-                    };
-                    escolabyId.Turmas.Add(turmaModel);
-                }
 
+                if (response.Endereco != null)
+                {
+                    escolabyId.Endereco = new EnderecoModel()
+                    {
+                        IdEndereco = response.Endereco.IdEndereco,
+                        Logradouro = response.Endereco.Logradouro,
+                        Complemento = response.Endereco.Complemento,
+                        Bairro = response.Endereco.Bairro,
+                        Cidade = response.Endereco.Cidade,
+                        Estado = response.Endereco.Estado,
+                    };
+                }
+                if (response.Turmas != null && response.Turmas.Count() > 0)
+                {
+                    escolabyId.Turmas = new List<TurmaModel>();
+
+                    foreach (var turma in response.Turmas)
+                    {
+                        var turmaModel = new TurmaModel()
+                        {
+                            IdTurma = turma.IdTurma,
+                            Nome = turma.Nome,
+                            Capacidade = turma.Capacidade
+                        };
+                        escolabyId.Turmas.Add(turmaModel);
+                    }
+                }
                 return new GetEscolaByIdResponse(true, escolabyId);
             }
             else
@@ -85,26 +91,38 @@ namespace Desafio.Tech.Dog.ApplicationService.Services
 
             if (lstModel != null && lstModel.Count > 0)
             {
-                List<ListEscolaMessage> lstEscola = lstModel.Select(model => new ListEscolaMessage
+                List<ListEscolaMessage> lstEscola = new List<ListEscolaMessage>();
+
+                lstModel.ForEach(model =>
                 {
-                    IdEscola = model.IdEscola,
-                    Nome = model.Nome,
-                    Endereco = new EnderecoModel()
+                    ListEscolaMessage escola = new ListEscolaMessage();
+
+                    escola.IdEscola = model.IdEscola;
+                    escola.Nome = model.Nome;
+                    if (model.Endereco != null)
                     {
-                        IdEndereco = model.Endereco.IdEndereco,
-                        Logradouro = model.Endereco.Logradouro,
-                        Complemento = model.Endereco.Complemento,
-                        Bairro = model.Endereco.Bairro,
-                        Cidade = model.Endereco.Cidade,
-                        Estado = model.Endereco.Estado,
-                    },
-                    Turmas = model.Turmas.Select(turma => new TurmaModel()
+                        escola.Endereco = new EnderecoModel()
+                        {
+                            IdEndereco = model.Endereco.IdEndereco,
+                            Logradouro = model.Endereco.Logradouro,
+                            Complemento = model.Endereco.Complemento,
+                            Bairro = model.Endereco.Bairro,
+                            Cidade = model.Endereco.Cidade,
+                            Estado = model.Endereco.Estado,
+                        };
+                    }
+                    if (model.Turmas != null && model.Turmas.Count > 0)
                     {
-                        IdTurma = turma.IdTurma,
-                        Nome = turma.Nome,
-                        Capacidade = turma.Capacidade
-                    }).ToList()
-                }).ToList();
+                        escola.Turmas = new List<TurmaModel>();
+                        escola.Turmas = model.Turmas.Select(turma => new TurmaModel()
+                        {
+                            IdTurma = turma.IdTurma,
+                            Nome = turma.Nome,
+                            Capacidade = turma.Capacidade
+                        }).ToList();
+                    }
+                    lstEscola.Add(escola);
+                });
                 return new ListEscolaResponse(true, lstEscola);
             }
             else
@@ -116,7 +134,7 @@ namespace Desafio.Tech.Dog.ApplicationService.Services
 
             if (model != null && model.IdEscola > 0)
             {
-                model.Update(model.Nome);
+                model.Update(request.Nome);
 
                 _escolaDomainService.Update(model);
 

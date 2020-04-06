@@ -14,6 +14,7 @@ namespace Desafio.Tech.Dog.Domain.Entities
         public string Estado { get; set; }
 
         public Escola Escola { get; set; }
+        public int IdEscola { get; set; }
 
         public void Update(string logradouro, string complemento, string bairro, string cidade, string estado)
         {

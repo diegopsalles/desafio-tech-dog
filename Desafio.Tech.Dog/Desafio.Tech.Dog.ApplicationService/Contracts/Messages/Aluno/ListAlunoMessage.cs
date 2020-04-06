@@ -15,8 +15,10 @@ namespace Desafio.Tech.Dog.ApplicationService.Contracts.Messages.Aluno
         public string Nome { get; set; }
         [JsonPropertyName("dataDeNascimento")]
         public DateTime DataDeNascimento { get; set; }
+        //[JsonPropertyName("idTurma")]
+        //public TurmaModel IdTurma { get; set; }
         [JsonPropertyName("idTurma")]
-        public TurmaModel IdTurma { get; set; }
+        public int IdTurma { get; set; }
 
     }
 }

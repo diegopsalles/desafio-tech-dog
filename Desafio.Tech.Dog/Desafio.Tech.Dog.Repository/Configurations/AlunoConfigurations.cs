@@ -18,7 +18,9 @@ namespace Desafio.Tech.Dog.Repository.Configurations
                 e.Property(x => x.IdAluno).HasColumnName("IdAluno").ValueGeneratedOnAdd();;
                 e.Property(x => x.Nome).IsRequired();
                 e.Property(x => x.DataDeNascimento).IsRequired();
-                e.HasOne(x => x.Turma);
+                e.Property(x => x.IdTurma).IsRequired();
+                //e.HasOne(x => x.Turma);
+
             });
         }
     }

@@ -23,7 +23,7 @@ namespace Desafio.Tech.Dog.ApplicationService.Services
             var model = new Endereco();
 
             model.Add(request.EnderecoMessage.Logradouro, request.EnderecoMessage.Complemento,request.EnderecoMessage.Bairro,
-                request.EnderecoMessage.Cidade,request.EnderecoMessage.Estado);
+                request.EnderecoMessage.Cidade,request.EnderecoMessage.Estado, request.EnderecoMessage.IdEscola);
 
             _enderecoDomainService.Create(model);
 
@@ -56,11 +56,12 @@ namespace Desafio.Tech.Dog.ApplicationService.Services
                     Bairro = response.Bairro,
                     Cidade = response.Cidade,
                     Estado = response.Estado,
-                    Escola = new EscolaModel()
-                    {
-                        IdEscola = response.Escola.IdEscola,
-                        Nome = response.Escola.Nome
-                    }
+                    IdEscola = response.IdEscola
+                    //Escola = new EscolaModel()
+                    //{
+                    //    IdEscola = response.Escola.IdEscola,
+                    //    Nome = response.Escola.Nome
+                    //}
                 };
                 return new GetEnderecoByIdResponse(true, enderecobyId);
             }
@@ -82,11 +83,12 @@ namespace Desafio.Tech.Dog.ApplicationService.Services
                     Bairro = model.Bairro,
                     Cidade = model.Cidade,
                     Estado = model.Estado,
-                    Escola = new EscolaModel()
-                    {
-                        IdEscola = model.Escola.IdEscola,
-                        Nome = model.Escola.Nome
-                    }
+                    IdEscola = model.IdEscola
+                    //Escola = new EscolaModel()
+                    //{
+                    //    IdEscola = model.Escola.IdEscola,
+                    //    Nome = model.Escola.Nome
+                    //}
                 }).ToList();
                 return new ListEnderecoResponse(true, lstEndereco);
             }

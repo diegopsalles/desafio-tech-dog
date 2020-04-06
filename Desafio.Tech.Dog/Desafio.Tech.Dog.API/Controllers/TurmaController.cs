@@ -51,7 +51,7 @@ namespace Desafio.Tech.Dog.API.Controllers
         }
 
         [HttpGet]
-        [Route("/{idTurma}")]
+        [Route("{idTurma}")]
         public IActionResult Get([FromQuery]GetTurmaByIdRequest request)
         {
             var response = _turmaApplicationService.Get(request);
@@ -63,7 +63,7 @@ namespace Desafio.Tech.Dog.API.Controllers
         }
 
         [HttpDelete]
-        [Route("/{idTurma}")]
+        [Route("{idTurma}")]
         public IActionResult Delete([FromRoute]DeleteTurmaRquest request)
         {
             var response = _turmaApplicationService.Delete(request);

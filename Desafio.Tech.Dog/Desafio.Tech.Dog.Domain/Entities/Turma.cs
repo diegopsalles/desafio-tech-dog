@@ -10,6 +10,8 @@ namespace Desafio.Tech.Dog.Domain.Entities
         public string Nome { get; set; }
         public int Capacidade { get; set; }
 
+        public Escola IdEscola { get; set; }
+
         public List<Aluno> Alunos { get; set; }
 
 

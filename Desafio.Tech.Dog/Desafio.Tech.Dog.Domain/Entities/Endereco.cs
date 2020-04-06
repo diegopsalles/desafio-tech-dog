@@ -24,13 +24,14 @@ namespace Desafio.Tech.Dog.Domain.Entities
             this.Cidade = cidade;
             this.Estado = estado;
         }
-        public void Add(string logradouro, string complemento, string bairro, string cidade, string estado)
+        public void Add(string logradouro, string complemento, string bairro, string cidade, string estado, int idEscola)
         {
             this.Logradouro = logradouro;
             this.Complemento = complemento;
             this.Bairro = bairro;
             this.Cidade = cidade;
             this.Estado = estado;
+            this.IdEscola = idEscola;
         }
     }
 }

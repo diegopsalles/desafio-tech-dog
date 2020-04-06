@@ -10,7 +10,8 @@ namespace Desafio.Tech.Dog.ApplicationService.Contracts.Request.Aluno
         public int IdAluno { get; set; }
         public string Nome { get; set; }
         public DateTime DataDeNascimento { get; set; }
-        public TurmaModel Turma { get; set; }
+        public int IdTurma { get; set; }
+        //public TurmaModel Turma { get; set; }
     }
 
 }

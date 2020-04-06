@@ -95,7 +95,7 @@ namespace Desafio.Tech.Dog.ApplicationService.Services
 
             if (model != null && model.IdTurma > 0)
             {
-                model.Update(model.Nome, model.Capacidade);
+                model.Update(request.Nome, request.Capacidade);
 
                 _turmaDomainService.Update(model);
 

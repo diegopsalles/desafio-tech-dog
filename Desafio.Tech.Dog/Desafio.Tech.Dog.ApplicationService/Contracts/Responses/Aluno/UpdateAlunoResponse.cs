@@ -8,15 +8,15 @@ namespace Desafio.Tech.Dog.ApplicationService.Contracts.Responses.Aluno
 {
     public class UpdateAlunoResponse : AlunoBaseResponse
     {
-        public UpdateAlunoResponse(bool success, UpdateAlunoMessage result = null, string error = "", string message = null)
+        public UpdateAlunoResponse(bool success, string error = "", string message = null)
         {
-            Result = result;
+            Message = message;
             Success = success;
             if (!success)
                 SetError(error);
         }
 
-        [JsonPropertyName("result")]
-        public UpdateAlunoMessage Result { get; set; }
+        [JsonPropertyName("message")]
+        public string Message { get; set; }
     }
 }

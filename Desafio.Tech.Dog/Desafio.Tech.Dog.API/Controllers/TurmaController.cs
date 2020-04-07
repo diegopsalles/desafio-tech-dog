@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Threading.Tasks;
-using Desafio.Tech.Dog.ApplicationService.Contracts.Request.Turma;
+﻿using Desafio.Tech.Dog.ApplicationService.Contracts.Request.Turma;
 using Desafio.Tech.Dog.ApplicationService.Interfaces;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Net;
 
 namespace Desafio.Tech.Dog.API.Controllers
 {
@@ -64,7 +59,7 @@ namespace Desafio.Tech.Dog.API.Controllers
 
         [HttpDelete]
         [Route("{idTurma}")]
-        public IActionResult Delete([FromRoute]DeleteTurmaRquest request)
+        public IActionResult Delete([FromQuery]DeleteTurmaRquest request)
         {
             var response = _turmaApplicationService.Delete(request);
 

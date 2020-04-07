@@ -7,5 +7,8 @@ namespace Desafio.Tech.Dog.Domain.Contracts.Repositories
 {
     public interface IEscolaRepository : IBaseRepository<Escola, int>
     {
+        Escola GetEscolaById(int escolaId);
+
+        List<Escola> GetEscola();
     }
 }

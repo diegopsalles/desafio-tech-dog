@@ -14,8 +14,8 @@ namespace Desafio.Tech.Dog.Domain.Service
 
         public void Create(Escola escola) => _escolaRepository.Insert(escola);
         public void Delete(Escola obj) => _escolaRepository.Delete(obj);
-        public List<Escola> ListAll() => _escolaRepository.GetAll();
-        public Escola ListById(int id) => _escolaRepository.GetById(id);
+        public List<Escola> ListAll() => _escolaRepository.GetEscola();
+        public Escola ListById(int id) => _escolaRepository.GetEscolaById(id);
         public void Update(Escola obj) => _escolaRepository.Update(obj);
 
     }

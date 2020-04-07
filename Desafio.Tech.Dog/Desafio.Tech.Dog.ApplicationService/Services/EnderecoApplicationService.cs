@@ -17,24 +17,24 @@ namespace Desafio.Tech.Dog.ApplicationService.Services
         private readonly IEnderecoDomainService _enderecoDomainService;
 
         public EnderecoApplicationService(IEnderecoDomainService enderecoDomainService) => _enderecoDomainService = enderecoDomainService;
-        
+
         public AddEnderecoResponse Add(AddEnderecoRequest request)
         {
             var model = new Endereco();
 
-            model.Add(request.EnderecoMessage.Logradouro, request.EnderecoMessage.Complemento,request.EnderecoMessage.Bairro,
-                request.EnderecoMessage.Cidade,request.EnderecoMessage.Estado, request.EnderecoMessage.IdEscola);
+            model.Add(request.EnderecoMessage.Logradouro, request.EnderecoMessage.Complemento, request.EnderecoMessage.Bairro,
+                request.EnderecoMessage.Cidade, request.EnderecoMessage.Estado, request.EnderecoMessage.IdEscola);
 
             _enderecoDomainService.Create(model);
 
-            return new AddEnderecoResponse(true, model.IdEndereco);
+            return new AddEnderecoResponse(true, model.Id);
         }
 
         public DeleteEnderecoResponse Delete(DeleteEnderecoRequest request)
         {
             var model = _enderecoDomainService.ListById(request.IdEndereco);
 
-            if (model != null && model.IdEndereco > 0)
+            if (model != null && model.Id > 0)
             {
                 _enderecoDomainService.Delete(model);
                 return new DeleteEnderecoResponse(true, message: "Endereco was deleted successfully!");
@@ -46,17 +46,17 @@ namespace Desafio.Tech.Dog.ApplicationService.Services
         {
             var response = _enderecoDomainService.ListById(request.IdEndereco);
 
-            if (response != null && response.IdEndereco > 0)
+            if (response != null && response.Id > 0)
             {
                 var enderecobyId = new GetEnderecoByIdMessage
                 {
-                    IdEndereco = response.IdEndereco,
+                    IdEndereco = response.Id,
                     Logradouro = response.Logradouro,
                     Complemento = response.Complemento,
                     Bairro = response.Bairro,
                     Cidade = response.Cidade,
                     Estado = response.Estado,
-                    IdEscola = response.IdEscola
+                    //IdEscola = response.IdEscola
                     //Escola = new EscolaModel()
                     //{
                     //    IdEscola = response.Escola.IdEscola,
@@ -77,13 +77,13 @@ namespace Desafio.Tech.Dog.ApplicationService.Services
             {
                 List<ListEnderecoMessage> lstEndereco = lstModel.Select(model => new ListEnderecoMessage
                 {
-                    IdEndereco = model.IdEndereco,
+                    IdEndereco = model.Id,
                     Logradouro = model.Logradouro,
                     Complemento = model.Complemento,
                     Bairro = model.Bairro,
                     Cidade = model.Cidade,
                     Estado = model.Estado,
-                    IdEscola = model.IdEscola
+                    //IdEscola = model.IdEscola
                     //Escola = new EscolaModel()
                     //{
                     //    IdEscola = model.Escola.IdEscola,
@@ -100,7 +100,7 @@ namespace Desafio.Tech.Dog.ApplicationService.Services
         {
             var model = _enderecoDomainService.ListById(request.IdEndereco);
 
-            if (model != null && model.IdEndereco > 0)
+            if (model != null && model.Id > 0)
             {
                 model.Update(request.Logradouro, request.Complemento,
                     request.Bairro,

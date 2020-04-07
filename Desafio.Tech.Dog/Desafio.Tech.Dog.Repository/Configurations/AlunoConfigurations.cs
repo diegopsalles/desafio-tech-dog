@@ -1,9 +1,7 @@
-﻿using Desafio.Tech.Dog.Domain.Entities;
+﻿using System;
 using Microsoft.EntityFrameworkCore;
+using Desafio.Tech.Dog.Domain.Entities;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Desafio.Tech.Dog.Repository.Configurations
 {
@@ -14,12 +12,12 @@ namespace Desafio.Tech.Dog.Repository.Configurations
             return (e =>
             {
                 e.ToTable("Aluno");
-                e.HasKey(x => x.IdAluno);
-                e.Property(x => x.IdAluno).HasColumnName("IdAluno").ValueGeneratedOnAdd();;
+                e.HasKey(x => x.Id);
+                e.Property(x => x.Id).HasColumnName("Id").ValueGeneratedOnAdd(); ;
                 e.Property(x => x.Nome).IsRequired();
                 e.Property(x => x.DataDeNascimento).IsRequired();
-                e.HasOne(x => x.Turma).WithOne(y => y.Aluno).HasForeignKey<Turma>(z => z.IdTurma);
 
+                e.HasOne(x => x.Turma);
             });
         }
     }

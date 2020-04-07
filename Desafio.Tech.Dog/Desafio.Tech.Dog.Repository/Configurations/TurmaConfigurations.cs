@@ -2,8 +2,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Desafio.Tech.Dog.Repository.Configurations
 {
@@ -14,11 +12,14 @@ namespace Desafio.Tech.Dog.Repository.Configurations
             return (e =>
             {
                 e.ToTable("Turma");
-                e.HasKey(x => x.IdTurma);
-                e.Property(x => x.IdTurma).HasColumnName("IdTurma").ValueGeneratedOnAdd(); ;
+                e.HasKey(x => x.Id);
+                e.Property(x => x.Id).HasColumnName("Id").ValueGeneratedOnAdd(); ;
                 e.Property(x => x.Nome).IsRequired();
                 e.Property(x => x.Capacidade).IsRequired();
-                e.HasMany(x => x.Alunos).WithOne(y => y.Turma).HasForeignKey<Aluno>(z => z.IdAluno);
+
+                e.HasOne(x => x.Escola);
+                e.HasMany(x => x.Alunos);
+
             });
         }
     }

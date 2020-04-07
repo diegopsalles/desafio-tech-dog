@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Threading.Tasks;
-using Desafio.Tech.Dog.ApplicationService.Contracts.Request.Aluno;
+﻿using Desafio.Tech.Dog.ApplicationService.Contracts.Request.Aluno;
 using Desafio.Tech.Dog.ApplicationService.Interfaces;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Net;
 
 namespace Desafio.Tech.Dog.API.Controllers
 {

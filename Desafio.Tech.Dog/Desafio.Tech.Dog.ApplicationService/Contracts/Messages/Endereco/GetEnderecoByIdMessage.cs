@@ -20,8 +20,6 @@ namespace Desafio.Tech.Dog.ApplicationService.Contracts.Messages.Endereco
         public string Cidade { get; set; }
         [JsonPropertyName("estado")]
         public string Estado { get; set; }
-        //[JsonPropertyName("escola")]
-        //public EscolaModel Escola { get; set; }
         [JsonPropertyName("idEscola")]
         public int IdEscola { get; set; }
 

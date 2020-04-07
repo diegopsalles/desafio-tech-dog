@@ -8,15 +8,15 @@ namespace Desafio.Tech.Dog.ApplicationService.Contracts.Responses.Endereco
 {
     public class UpdateEnderecoResponse : EnderecoBaseResponse
     {
-        public UpdateEnderecoResponse(bool success, UpdateEnderecoMessage result = null, string error = "", string message = null)
+        public UpdateEnderecoResponse(bool success, string error = "", string message = null)
         {
-            Result = result;
+            Message = message;
             Success = success;
             if (!success)
                 SetError(error);
         }
 
-        [JsonPropertyName("result")]
-        public UpdateEnderecoMessage Result { get; set; }
+        [JsonPropertyName("message")]
+        public string Message { get; set; }
     }
 }

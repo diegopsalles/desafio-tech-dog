@@ -64,7 +64,7 @@ namespace Desafio.Tech.Dog.API.Controllers
 
         [HttpDelete]
         [Route("{idEndereco}")]
-        public IActionResult Delete([FromRoute]DeleteEnderecoRequest request)
+        public IActionResult Delete([FromQuery]DeleteEnderecoRequest request)
         {
             var response = _enderecoApplicationService.Delete(request);
 

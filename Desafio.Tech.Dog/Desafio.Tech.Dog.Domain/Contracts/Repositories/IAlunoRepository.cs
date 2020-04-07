@@ -7,5 +7,6 @@ namespace Desafio.Tech.Dog.Domain.Contracts.Repositories
 {
     public interface IAlunoRepository : IBaseRepository<Aluno, int>
     {
+
     }
 }

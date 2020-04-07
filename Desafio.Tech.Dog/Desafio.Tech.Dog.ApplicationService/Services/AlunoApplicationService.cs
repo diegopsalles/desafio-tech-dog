@@ -16,24 +16,24 @@ namespace Desafio.Tech.Dog.ApplicationService.Services
     {
         private readonly IAlunoDomainService _alunoDomainService;
 
-        public AlunoApplicationService( IAlunoDomainService alunoDomainService) => _alunoDomainService = alunoDomainService;
+        public AlunoApplicationService(IAlunoDomainService alunoDomainService) => _alunoDomainService = alunoDomainService;
 
         public AddAlunoResponse Add(AddAlunoRequest request)
         {
             var model = new Aluno();
-            
-            model.Add(request.AlunoMessage.Nome,request.AlunoMessage.DataDeNascimento, request.AlunoMessage.IdTurma);
+
+            model.Add(request.AlunoMessage.Nome, request.AlunoMessage.DataDeNascimento, request.AlunoMessage.IdTurma);
 
             _alunoDomainService.Create(model);
 
-            return new AddAlunoResponse(true, model.IdAluno);
+            return new AddAlunoResponse(true, model.Id);
         }
 
         public DeleteAlunoResponse Delete(DeleteAlunoRequest request)
         {
-            var model =  _alunoDomainService.ListById(request.IdAluno);
+            var model = _alunoDomainService.ListById(request.IdAluno);
 
-            if (model != null && model.IdAluno > 0)
+            if (model != null && model.Id > 0)
             {
                 _alunoDomainService.Delete(model);
                 return new DeleteAlunoResponse(true, message: "Aluno was deleted successfully!");
@@ -46,14 +46,14 @@ namespace Desafio.Tech.Dog.ApplicationService.Services
         {
             var response = _alunoDomainService.ListById(request.IdAluno);
 
-            if (response != null && response.IdAluno > 0)
+            if (response != null && response.Id > 0)
             {
                 var alunobyId = new GetAlunoByIdMessage
                 {
-                    IdAluno = response.IdAluno,
+                    IdAluno = response.Id,
                     Nome = response.Nome,
                     DataDeNascimento = response.DataDeNascimento,
-                    IdTurma = response.IdTurma,
+                    IdTurma = response.TurmaId,
                 };
                 //if (response.Turma != null)
                 //{
@@ -73,7 +73,7 @@ namespace Desafio.Tech.Dog.ApplicationService.Services
         public ListAlunoResponse List()
         {
             var lstModel = _alunoDomainService.ListAll();
-            
+
             if (lstModel != null && lstModel.Count > 0)
             {
                 List<ListAlunoMessage> lstAluno = new List<ListAlunoMessage>();
@@ -81,10 +81,10 @@ namespace Desafio.Tech.Dog.ApplicationService.Services
                 lstModel.ForEach(model =>
                 {
                     ListAlunoMessage aluno = new ListAlunoMessage();
-                    aluno.IdAluno = model.IdAluno;
+                    aluno.IdAluno = model.Id;
                     aluno.Nome = model.Nome;
                     aluno.DataDeNascimento = model.DataDeNascimento;
-                    aluno.IdTurma = model.IdTurma;
+                    aluno.IdTurma = model.TurmaId;
                     //if (model.Turma != null)
                     //{
                     //    aluno.IdTurma = new TurmaModel()
@@ -103,14 +103,14 @@ namespace Desafio.Tech.Dog.ApplicationService.Services
                 return new ListAlunoResponse(false);
         }
 
-    public UpdateAlunoResponse Update(UpdateAlunoRequest request)
+        public UpdateAlunoResponse Update(UpdateAlunoRequest request)
         {
             var model = _alunoDomainService.ListById(request.IdAluno);
 
-            if (model != null && model.IdAluno > 0)
+            if (model != null && model.Id > 0)
             {
                 model.Update(request.Nome, request.DataDeNascimento, request.IdTurma);//, request.Turma.IdTurma, request.Turma.Nome, request.Turma.Capacidade);
-                
+
                 _alunoDomainService.Update(model);
 
                 return new UpdateAlunoResponse(true, message: "Aluno was updated successfully!");

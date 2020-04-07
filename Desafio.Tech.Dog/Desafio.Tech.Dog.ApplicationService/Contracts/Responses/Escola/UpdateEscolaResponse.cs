@@ -8,15 +8,15 @@ namespace Desafio.Tech.Dog.ApplicationService.Contracts.Responses.Escola
 {
     public class UpdateEscolaResponse : EscolaBaseResponse
     {
-        public UpdateEscolaResponse(bool success, UpdateEscolaMessage result = null, string error = "", string message = null)
+        public UpdateEscolaResponse(bool success, string error = "", string message = null)
         {
-            Result = result;
+            Message = message;
             Success = success;
             if (!success)
                 SetError(error);
         }
 
-        [JsonPropertyName("result")]
-        public UpdateEscolaMessage Result { get; set; }
+        [JsonPropertyName("message")]
+        public string Message { get; set; }
     }
 }

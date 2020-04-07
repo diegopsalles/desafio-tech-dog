@@ -21,18 +21,18 @@ namespace Desafio.Tech.Dog.ApplicationService.Services
         {
             var model = new Turma();
 
-            model.Add(request.TurmaMessage.Nome, request.TurmaMessage.Capacidade);
+            model.Add(request.TurmaMessage.Nome, request.TurmaMessage.Capacidade, request.TurmaMessage.EscolaId);
 
             _turmaDomainService.Create(model);
 
-            return new AddTurmaResponse(true, model.IdTurma);
+            return new AddTurmaResponse(true, model.Id);
         }
 
         public DeleteTurmaResponse Delete(DeleteTurmaRquest request)
         {
             var model = _turmaDomainService.ListById(request.IdTurma);
 
-            if (model != null && model.IdTurma > 0)
+            if (model != null && model.Id > 0)
             {
                 _turmaDomainService.Delete(model);
                 return new DeleteTurmaResponse(true, message: "Turma was deleted successfully!");
@@ -45,18 +45,19 @@ namespace Desafio.Tech.Dog.ApplicationService.Services
         {
             var response = _turmaDomainService.ListById(request.IdTurma);
 
-            if (response != null && response.IdTurma > 0)
+            if (response != null && response.Id > 0)
             {
                 var escolabyId = new GetTurmaByIdMessage();
-                escolabyId.IdTurma = response.IdTurma;
+                escolabyId.IdTurma = response.Id;
                 escolabyId.Nome = response.Nome;
+                escolabyId.Capacidade = response.Capacidade;
                 escolabyId.Alunos = new List<AlunoModel>();
 
                 foreach (var turma in response.Alunos)
                 {
                     var alunoModel = new AlunoModel()
                     {
-                        IdAluno = turma.IdAluno,
+                        IdAluno = turma.Id,
                         Nome = turma.Nome
                     };
                     escolabyId.Alunos.Add(alunoModel);
@@ -75,11 +76,12 @@ namespace Desafio.Tech.Dog.ApplicationService.Services
             {
                 List<ListTurmaMessage> lstEscola = lstModel.Select(model => new ListTurmaMessage
                 {
-                    IdTurma = model.IdTurma,
+                    IdTurma = model.Id,
                     Nome = model.Nome,
+                    Capacidade = model.Capacidade,
                     Alunos = model.Alunos.Select(turma => new AlunoModel()
                     {
-                        IdAluno = turma.IdAluno,
+                        IdAluno = turma.Id,
                         Nome = turma.Nome,
                     }).ToList()
                 }).ToList();
@@ -93,9 +95,9 @@ namespace Desafio.Tech.Dog.ApplicationService.Services
         {
             var model = _turmaDomainService.ListById(request.IdTurma);
 
-            if (model != null && model.IdTurma > 0)
+            if (model != null && model.Id > 0)
             {
-                model.Update(request.Nome, request.Capacidade);
+                model.Update(request.Nome, request.Capacidade, request.EscolaId);
 
                 _turmaDomainService.Update(model);
 

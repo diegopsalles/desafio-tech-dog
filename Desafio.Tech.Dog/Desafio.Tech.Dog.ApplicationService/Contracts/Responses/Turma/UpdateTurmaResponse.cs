@@ -8,15 +8,15 @@ namespace Desafio.Tech.Dog.ApplicationService.Contracts.Responses.Turma
 {
     public class UpdateTurmaResponse : TurmaBaseResponse
     {
-        public UpdateTurmaResponse(bool success, UpdateTurmaMessage result = null, string error = "", string message = null)
+        public UpdateTurmaResponse(bool success, string error = "", string message = null)
         {
-            Result = result;
+            Message = message;
             Success = success;
             if (!success)
                 SetError(error);
         }
 
-        [JsonPropertyName("result")]
-        public UpdateTurmaMessage Result { get; set; }
+        [JsonPropertyName("message")]
+        public string Message { get; set; }
     }
 }

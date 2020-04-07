@@ -12,7 +12,7 @@ namespace Desafio.Tech.Dog.ApplicationService.Contracts.Messages.Turma
         public int IdTurma { get; set; }
         [JsonPropertyName("nome")]
         public string Nome { get; set; }
-        [JsonPropertyName("endereco")]
+        [JsonPropertyName("capacidade")]
         public int Capacidade { get; set; }
 
         [JsonPropertyName("turmas")]

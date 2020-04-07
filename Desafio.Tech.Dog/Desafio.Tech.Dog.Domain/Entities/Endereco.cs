@@ -6,15 +6,14 @@ namespace Desafio.Tech.Dog.Domain.Entities
 {
     public class Endereco
     {
-        public int IdEndereco { get; set; }
+        public int Id { get; set; }
         public string Logradouro { get; set; }
-        public string  Complemento { get; set; }
+        public string Complemento { get; set; }
         public string Bairro { get; set; }
         public string Cidade { get; set; }
         public string Estado { get; set; }
-
         public Escola Escola { get; set; }
-        public int IdEscola { get; set; }
+        public int EscolaId { get; set; }
 
         public void Update(string logradouro, string complemento, string bairro, string cidade, string estado)
         {
@@ -31,7 +30,7 @@ namespace Desafio.Tech.Dog.Domain.Entities
             this.Bairro = bairro;
             this.Cidade = cidade;
             this.Estado = estado;
-            this.IdEscola = idEscola;
+            this.EscolaId = idEscola;
         }
     }
 }

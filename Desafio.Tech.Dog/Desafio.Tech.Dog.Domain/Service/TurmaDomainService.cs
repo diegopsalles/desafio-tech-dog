@@ -15,8 +15,9 @@ namespace Desafio.Tech.Dog.Domain.Service
 
         public void Create(Turma turma) => _turmaRepository.Insert(turma);
         public void Delete(Turma obj) => _turmaRepository.Delete(obj);
-        public List<Turma> ListAll() => _turmaRepository.GetAll();
-        public Turma ListById(int id) => _turmaRepository.GetById(id);
+        public List<Turma> ListAll() => _turmaRepository.GetTurmas();
+
+        public Turma ListById(int id) => _turmaRepository.GetTurmaById(id);
         public void Update(Turma obj) => _turmaRepository.Update(obj);
     }
 }

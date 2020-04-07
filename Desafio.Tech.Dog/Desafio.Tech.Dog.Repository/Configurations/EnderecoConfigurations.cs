@@ -16,8 +16,8 @@ namespace Desafio.Tech.Dog.Repository.Configurations
                 e.ToTable("Endereco");
                 e.HasKey(x => x.IdEndereco);
                 e.Property(x => x.IdEndereco).HasColumnName("IdEndereco").ValueGeneratedOnAdd(); ;
-                e.Property(x => x.IdEscola).IsRequired();
-                e.HasOne(x => x.Escola).WithOne(y => y.IdEscola).HasForeignKey<Escola>(z => z.IdEscola);
+                //e.Property(x => x.IdEscola).IsRequired();
+                e.HasOne(x => x.Escola).WithOne(y => y.Endereco).HasForeignKey<Escola>(z => z.IdEscola);
                 e.Property(x => x.Logradouro).IsRequired();
                 e.Property(x => x.Complemento).IsRequired();
                 e.Property(x => x.Bairro).IsRequired();
